@@ -1,0 +1,9 @@
+{
+  "_comment": "measure and confirm: controller deadband and heading PID (P/I/D) values for responsiveness and stability.",
+  "angleJoystickRadiusDeadband": 0.5,
+  "heading": {
+    "p": 0.4,
+    "i": 0,
+    "d": 0.01
+  }
+}

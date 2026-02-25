@@ -21,25 +21,25 @@ public class Drivetrain extends SubsystemBase {
     // may have caused errors that crahsed the robot last year... 😭
     //SwerveDriveTelemetry.verbosity = TelemetryVerbosity.LOW;
 
-    public final SwerveDrive swerveDrive;
+  public final SwerveDrive swerveDrive;
 
-    public Drivetrain(File directory) {
-        try {
-        this.swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_SPEED);
-        } catch (Exception e) {
-        throw new RuntimeException(e);
-        }
-
-        this.swerveDrive.setHeadingCorrection(false);
-        this.swerveDrive.setCosineCompensator(true);
-        this.swerveDrive.setVisionMeasurementStdDevs(
-            new Matrix<N3, N1>(new SimpleMatrix(new double[][] {{0.00001}, {0.000001}, {0.0000001}})));
-
-        this.swerveDrive.setMotorIdleMode(false);
+  public Drivetrain(File directory) {
+    try {
+    this.swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_SPEED);
+    } catch (Exception e) {
+    throw new RuntimeException(e);
     }
 
-    @Override
-    public void periodic() {
+    this.swerveDrive.setHeadingCorrection(false);
+    this.swerveDrive.setCosineCompensator(true);
+    this.swerveDrive.setVisionMeasurementStdDevs(
+        new Matrix<N3, N1>(new SimpleMatrix(new double[][] {{0.00001}, {0.000001}, {0.0000001}})));
 
-    }
+    this.swerveDrive.setMotorIdleMode(false);
+  }
+
+  @Override
+  public void periodic() {
+
+  }
 }
