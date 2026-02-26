@@ -15,7 +15,7 @@ public class Drivetrain extends SubsystemBase {
     //6.12:1 gear ratio
     //krakens for drive moters, neos for Steering
     //wheel radius: 1.75in
-    //distance from module centre to robot centre: 16.90in
+    //distance from module centre to robot centre: ~15.496in
 
     // Only use this if you need to DEBUG! Micah thinks doing TelemetryVerbosity.LOW
     // may have caused errors that crahsed the robot last year... 😭
