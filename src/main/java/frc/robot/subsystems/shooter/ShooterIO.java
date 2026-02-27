@@ -1,8 +1,10 @@
 package frc.robot.subsystems.shooter;
 
+import org.littletonrobotics.junction.AutoLog;
+
 public class ShooterIO {
-    @Autolog
-    public static class HopperInputs {
+    @AutoLog
+    public static class ShooterInputs {
         public double current; // amps
         public double temperature; // celsius
         public double voltage; // % max voltage
