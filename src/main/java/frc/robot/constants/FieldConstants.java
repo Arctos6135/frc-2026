@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //These are the field constants I think we will need
-public class FieldConstands {
+public class FieldConstants {
     //All mesurments are from the game manual and are in metres 
     public static final double FIELD_WIDTH = 8.07; //Y distance 
     public static final double FIELD_LENGTH = 16.54; //X distance
