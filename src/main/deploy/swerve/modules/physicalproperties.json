@@ -1,0 +1,22 @@
+{
+  "_comment": "measure and confirm: wheel diameter (drive.diameter), gear ratios, current limits, ramp rates, robotMass, and the distance from each module center to robot center (not currently present).",
+  "conversionFactors": {
+    "angle": {
+      "gearRatio": 21.4285714286
+    },
+    "drive": {
+      "diameter": 4.0,
+      "gearRatio": 6.12
+    }
+  },
+  "currentLimit": {
+    "drive": 40,
+    "angle": 20
+  },
+  "rampRate": {
+    "drive": 0.25,
+    "angle": 0.25
+  },
+  "optimalVoltage": 12,
+  "robotMass": 50
+}

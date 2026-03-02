@@ -7,7 +7,15 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.drivetrain.TeleopDrive;
+import frc.robot.constants.ControllerConstants;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.drivetrain.Drivetrain;
+
+import java.io.File;
+
+import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -26,9 +34,17 @@ public class RobotContainer {
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
+  public final XboxController driverController =
+      new XboxController(ControllerConstants.DRIVER_CONTROLLER);
+
+  public final Drivetrain drivetrain;
+  public final TeleopDrive teleopDrive;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
+    this.drivetrain = new Drivetrain(new File(Filesystem.getDeployDirectory(), "swerve"));
+    teleopDrive = new TeleopDrive(drivetrain, driverController);
+    drivetrain.setDefaultCommand(teleopDrive);
     configureBindings();
   }
 

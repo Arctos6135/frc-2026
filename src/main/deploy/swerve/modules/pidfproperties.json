@@ -1,0 +1,17 @@
+{
+  "_comment": "measure and confirm/tune: PIDF values for drive and angle (angle P/D look especially small—confirm units and encoder conversions).",
+  "drive": {
+    "p": 1.0,
+    "i": 0.0,
+    "d": 0,
+    "f": 0,
+    "iz": 0.0
+  },
+  "angle": {
+    "p": 0.0069542,
+    "i": 0.0,
+    "d": 0.00034771,
+    "f": 0.0,
+    "iz": 0.0
+  }
+}
