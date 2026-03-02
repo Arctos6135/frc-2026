@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Test extends SubsystemBase{
     Test() {
         System.out.println(
-            "This is a test subsystem"
+            "This is a not test subsystem"
         );
     }
 }
