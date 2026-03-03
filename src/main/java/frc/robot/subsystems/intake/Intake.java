@@ -18,12 +18,30 @@ public class Intake extends SubsystemBase {
     
   }
 
+    /**
+   * Set the target rotational speed of the intake.
+   *
+   * @param rps rotations per second.
+   */
   public void setRPS(double rps) {
+    this.rps = rps;
   }
 
+  /**
+   * Set the target rotational speed of the intake.
+   *
+   * @param rpm rotations per minute.
+   */
   public void setRPM(double rpm) {
+    setRPS(rpm / 60);
   }
 
+  /**
+   * Set the voltage of the intake motor.
+   *
+   * @param voltage voltage
+   */
   public void setVoltage(double voltage) {
+    io.setVoltage(voltage);
   }
 }
