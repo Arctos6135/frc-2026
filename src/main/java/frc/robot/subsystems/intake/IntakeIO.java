@@ -6,7 +6,6 @@ public class IntakeIO {
     public double temperature; // celsius
     public double voltage; // % max voltage
     public double speed; // in rps
-    public double velocity;
   }
 
   public void setVoltage(double voltage) {}
