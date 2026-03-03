@@ -15,11 +15,7 @@ public class Intake extends SubsystemBase {
   }
 
   public double getVelocity() {
-    return inputs.
-  }
-
-  public double getFilteredCurrent() {
-    
+    return inputs.velocity;
   }
 
   /**
