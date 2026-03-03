@@ -8,5 +8,7 @@ public class IntakeIO {
     public double speed; // in rps
   }
 
+  public void updateInputs(IntakeInputs inputs) {}
+
   public void setVoltage(double voltage) {}
 }

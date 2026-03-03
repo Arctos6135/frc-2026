@@ -8,10 +8,11 @@ import frc.robot.subsystems.intake.IntakeIO.IntakeInputs;
 public class Intake extends SubsystemBase {
   private final IntakeIO io;
 
-  private final IntakeInputs inputs = new IntakeInputs(); // to be changed
+  private final IntakeInputs inputs = new IntakeInputs();
 
   private double rps;
 
+  // Reduce impact of noise and sudden spikes
   private final MedianFilter filter = new MedianFilter(IntakeConstants.MEDIAN_FILTER_SIZE);
   private double medianCurrent;
 
@@ -22,10 +23,14 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {} //TODO
 
+  /**
+   * @return in meters of tread per second
+   */
   public double getVelocity() {
     return inputs.speed;
   }
-  
+
+  /** Get the most up-to-date filtered current value. */
   public double getFilteredCurrent() {
     return medianCurrent;
   }

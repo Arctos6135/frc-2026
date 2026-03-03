@@ -11,5 +11,11 @@ public class IntakeIOReal extends IntakeIO {
 
   private final RelativeEncoder intakeMotorEncoder;
 
-  public IntakeIOReal() {} // TODO
+  public IntakeIOReal() {} // TODO motor config
+
+  @Override
+  public void setVoltage(double voltage) {}
+
+  @Override
+  public void updateInputs(IntakeInputs inputs) {}
 }
