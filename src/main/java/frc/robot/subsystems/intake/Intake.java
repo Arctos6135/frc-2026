@@ -1,9 +1,12 @@
 package frc.robot.subsystems.intake;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.intake.IntakeIO.IntakeInputs;
 
 public class Intake extends SubsystemBase {
   private final IntakeIO io;
+
+  private final IntakeInputs inputs = new IntakeInputs(); // to be changed
 
   private double rps;
 
@@ -12,13 +15,14 @@ public class Intake extends SubsystemBase {
   }
 
   public double getVelocity() {
+    return inputs.
   }
 
   public double getFilteredCurrent() {
     
   }
 
-    /**
+  /**
    * Set the target rotational speed of the intake.
    *
    * @param rps rotations per second.

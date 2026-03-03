@@ -1,5 +1,13 @@
 package frc.robot.subsystems.intake;
 
 public class IntakeIO {
+  public static class IntakeInputs {
+    public double current; // amps
+    public double temperature; // celsius
+    public double voltage; // % max voltage
+    public double speed; // in rps
+    public double velocity;
+  }
+
   public void setVoltage(double voltage) {}
 }
