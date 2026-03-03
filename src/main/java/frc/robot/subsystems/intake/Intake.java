@@ -17,7 +17,9 @@ public class Intake extends SubsystemBase {
   public double getVelocity() {
     return inputs.
   }
-
+  private final MedianFilter filter = new MedianFilter(IntakeConstants.MEDIAN_FILTER_SIZE);
+  private double medianCurrent;
+  
   public double getFilteredCurrent() {
     
   }
