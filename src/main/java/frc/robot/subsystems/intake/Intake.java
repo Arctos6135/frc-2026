@@ -19,6 +19,9 @@ public class Intake extends SubsystemBase {
     this.io = io;
   }
 
+  @Override
+  public void periodic() {} //TODO
+
   public double getVelocity() {
     return inputs.speed;
   }
