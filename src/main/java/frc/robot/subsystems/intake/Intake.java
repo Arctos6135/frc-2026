@@ -2,6 +2,7 @@ package frc.robot.subsystems.intake;
 
 import edu.wpi.first.math.filter.MedianFilter;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.constants.IntakeConstants;
 import frc.robot.subsystems.intake.IntakeIO.IntakeInputs;
 
 public class Intake extends SubsystemBase {
@@ -11,6 +12,9 @@ public class Intake extends SubsystemBase {
 
   private double rps;
 
+  private final MedianFilter filter = new MedianFilter(IntakeConstants.MEDIAN_FILTER_SIZE);
+  private double medianCurrent;
+
   public Intake(IntakeIO io) {
     this.io = io;
   }
@@ -18,8 +22,6 @@ public class Intake extends SubsystemBase {
   public double getVelocity() {
     return inputs.speed;
   }
-  private final MedianFilter filter = new MedianFilter(IntakeConstants.MEDIAN_FILTER_SIZE);
-  private double medianCurrent;
   
   public double getFilteredCurrent() {
     return medianCurrent;
