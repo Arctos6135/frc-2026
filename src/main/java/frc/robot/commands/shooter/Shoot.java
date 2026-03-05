@@ -37,7 +37,7 @@ public class Shoot extends Command {
     }
 
     public void end(boolean interrupted) {
-        Shooter.setVoltage(0);
+        shooter.setVoltages(new double[]{0,0,0});
     }
     
 }
