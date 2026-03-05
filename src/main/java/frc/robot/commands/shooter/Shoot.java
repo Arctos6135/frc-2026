@@ -9,7 +9,7 @@ public class Shoot extends Command {
     private Collector collector;
     private final XboxController operatorController;
     public static final double[] SHOOTER_VOLTAGES = {-1, -1, -1};//insert constants here, move to constants folder
-    //position 0: shooter motor, position 1: relay, position 2: collector, change however you like
+    //for example, position 0: shooter motor, position 1: relay, position 2: collector, change however you like
 
     public Shoot(Shooter shooter, XboxController operatorController) {//add xbox controller
         this.shooter = shooter;
@@ -31,7 +31,7 @@ public class Shoot extends Command {
             } 
              */
         } else {
-            shooter.end();
+            shooter.end(true);
         }
         
     }
