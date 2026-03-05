@@ -4,20 +4,25 @@ import frc.robot.subsystems.shooter.Shooter;
 
 public class Shoot extends Command {
     private Shooter shooter;
-    private final XboxController operatorController
+    private Relay relay;
+    private Collector collector;
+    private final XboxController operatorController;
 
-    public Shoot(Shooter shooter) {//add xbox controller
-    this.shooter = shooter;
+    public Shoot(Shooter shooter, XboxController operatorController) {//add xbox controller
+        this.shooter = shooter;
+        this.operatorController = operatorController;
 
-    addRequirements(shooter);
+        addRequirements(shooter);
     }
 
-    public void execute () {
-
+    public void execute() {
+        Shooter.setVoltage(/*voltage constant for shooter*/ * (operatorController.getRightTriggerAxis()));
+        Relay.setVoltage(/*voltage constant for relay*/ * (operatorController.getRightTriggerAxis()));
+        Collector.setVoltage(/*voltage constant for collector*/ * (operatorController.getRightTriggerAxis()));
     }
 
-    public void end () {
-        
+    public void end(boolean interrupted) {
+        Shooter.setVoltage(0);
     }
     
 }
