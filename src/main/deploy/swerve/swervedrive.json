@@ -1,7 +1,7 @@
 {
   "_comment": "measure and confirm: IMU type/id and invertedIMU setting. Confirm module file order/paths and that module locations match physical robot layout.",
   "imu": {
-    "type": "adxrs450",
+    "type": "pigeon2",
     "id": 0,
     "canbus": null
   },

@@ -8,6 +8,20 @@ import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import org.ejml.simple.SimpleMatrix;
+import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
+import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.constants.SwerveConstants;
+import java.io.File;
+import org.ejml.simple.SimpleMatrix;
+import swervelib.SwerveDrive;
+import swervelib.parser.SwerveParser;
+import swervelib.telemetry.SwerveDriveTelemetry;
+import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 public class Drivetrain extends SubsystemBase {
     //Drivetrain details
@@ -17,13 +31,13 @@ public class Drivetrain extends SubsystemBase {
     //wheel radius: 1.75in
     //distance from module centre to robot centre: ~15.496in
 
-    // Only use this if you need to DEBUG! Micah thinks doing TelemetryVerbosity.LOW
-    // may have caused errors that crahsed the robot last year... 😭
-    //SwerveDriveTelemetry.verbosity = TelemetryVerbosity.LOW;
-
   public final SwerveDrive swerveDrive;
 
   public Drivetrain(File directory) {
+    // Only use this if you need to DEBUG! Micah thinks doing TelemetryVerbosity.LOW
+    // may have caused errors that crashed the robot last year... 😭
+
+    SwerveDriveTelemetry.verbosity = TelemetryVerbosity.LOW;
     try {
     this.swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_SPEED);
     } catch (Exception e) {
