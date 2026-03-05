@@ -1,18 +1,19 @@
 {
   "_comment": "measure and confirm: absoluteEncoderOffset, absoluteEncoderInverted, inverted.drive/angle, encoder id/type and canbus, and location distances (front/left).",
+  "_comment2": "confirm IDs",
   "drive": {
     "type": "talonfx",
-    "id": 8,
+    "id": 0,
     "canbus": null
   },
   "angle": {
     "type": "sparkmax",
-    "id": 7,
+    "id": 0,
     "canbus": null
   },
   "encoder": {
     "type": "thrifty",
-    "id": 3,
+    "id": 0,
     "canbus": null
   },
   "inverted": {
@@ -23,6 +24,6 @@
   "absoluteEncoderOffset": 187.7,
   "location": {
     "front": -11.375,
-    "left": 11.375
+    "left": 10.375
   }
 }
