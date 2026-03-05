@@ -8,6 +8,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.drivetrain.TeleopDrive;
+import frc.robot.commands.shooter.Shoot;
 import frc.robot.constants.ControllerConstants;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.drivetrain.Drivetrain;
@@ -39,12 +40,14 @@ public class RobotContainer {
 
   public final Drivetrain drivetrain;
   public final TeleopDrive teleopDrive;
+  public final Shooter shooter;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     this.drivetrain = new Drivetrain(new File(Filesystem.getDeployDirectory(), "swerve"));
     teleopDrive = new TeleopDrive(drivetrain, driverController);
     drivetrain.setDefaultCommand(teleopDrive);
+    shooter.setDefaultCommand(shooter);
     configureBindings();
   }
 
