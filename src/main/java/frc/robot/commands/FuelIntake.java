@@ -6,7 +6,7 @@ import edu.wpi.first.units.measure.Voltage;
 
 public class FuelIntake {
     FuelIntake(double Voltage){
-        System.out.println("Hello, World");
-        }
+        this.Voltage = 0;
+    }
         
     }
