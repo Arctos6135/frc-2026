@@ -3,12 +3,12 @@
   "_comment2": "confirm IDs",
   "drive": {
     "type": "talonfx",
-    "id": 0,
+    "id": 4,
     "canbus": null
   },
   "angle": {
     "type": "sparkmax",
-    "id": 0,
+    "id": 3,
     "canbus": null
   },
   "encoder": {
