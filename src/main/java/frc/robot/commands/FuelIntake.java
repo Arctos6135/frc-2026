@@ -11,7 +11,7 @@ public class FuelIntake {
     FuelIntake(double Voltage){
         this.Voltage = 1;
         }
-
+        
         public void setVoltage(double Voltage) {
             this.Voltage = 0;
         }
