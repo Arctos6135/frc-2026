@@ -1,12 +1,15 @@
 package frc.robot.subsystems.intake;
 
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.filter.MedianFilter;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.IntakeConstants;
 import frc.robot.subsystems.intake.IntakeIO.IntakeInputs;
+//import org.littletonrobotics.junction.Logger;
 
 public class Intake extends SubsystemBase {
   private final IntakeIO io;
+  private final SimpleMotorFeedforward feedforward;
 
   private final IntakeInputs inputs = new IntakeInputs();
 
@@ -18,10 +21,18 @@ public class Intake extends SubsystemBase {
 
   public Intake(IntakeIO io) {
     this.io = io;
+    this.feedforward = new 
+      SimpleMotorFeedforward(IntakeConstants.kS, IntakeConstants.kV, IntakeConstants.kA);
   }
 
   @Override
-  public void periodic() {} //TODO
+  public void periodic() {
+    io.updateInputs(inputs);
+    medianCurrent = filter.calculate(inputs.current);
+
+    io.setVoltage(feedforward.calculate(rps));
+    //Logger.processInputs("Intake", inputs);
+  }
 
   /**
    * @return in meters of tread per second
