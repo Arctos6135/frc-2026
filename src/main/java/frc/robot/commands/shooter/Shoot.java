@@ -6,8 +6,6 @@ import frc.robot.subsystems.shooter.Shooter;
 public class Shoot extends Command {
   
     private Shooter shooter;
-    private Relay relay;
-    private Collector collector;
     private final XboxController operatorController;
     public static final double[] SHOOTER_VOLTAGES = {-1, -1, -1};//insert constants here, move to constants folder
     //for example, position 0: shooter motor, position 1: relay, position 2: collector, change however you like
@@ -38,7 +36,7 @@ public class Shoot extends Command {
     }
 
     public void end(boolean interrupted) {
-        Shooter.setVoltage(0);
+        shooter.setVoltages(new double[]{0,0,0});
     }
     
 }
