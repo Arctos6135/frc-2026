@@ -5,6 +5,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class Vision {
   private VisionIO io;
+  // somehow import bin? i don't know how to
   private final VisionInputsAutoLogged inputs = new VisionInputsAutoLogged();
 
   public Vision(VisionIO io) {
