@@ -1,7 +1,8 @@
 {
   "_comment": "measure and confirm: absoluteEncoderOffset, absoluteEncoderInverted, inverted.drive/angle, encoder id/type and canbus, and location distances (front/left).",
+  "_comment2": "confirm IDs",
   "drive": {
-    "type": "talonfx",
+    "type": "krakenx60",
     "id": 2,
     "canbus": null
   },
@@ -23,6 +24,6 @@
   "absoluteEncoderOffset": 281.2,
   "location": {
     "front": 11.375,
-    "left": 11.375
+    "left": 10.375
   }
 }

@@ -6,9 +6,8 @@ import frc.robot.subsystems.relay.Relay;
 import frc.robot.subsystems.shooter.Shooter;
 
 public class Shoot extends Command {
+  
     private Shooter shooter;
-    private Relay relay;
-    private Collector collector;
     private final XboxController operatorController;
 
     public Shoot(Shooter shooter, XboxController operatorController) {//add xbox controller
