@@ -1,14 +1,14 @@
 package frc.robot.commands.shooter;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.collector.Collector;
+import frc.robot.subsystems.relay.Relay;
 import frc.robot.subsystems.shooter.Shooter;
 
 public class Shoot extends Command {
   
     private Shooter shooter;
     private final XboxController operatorController;
-    public static final double[] SHOOTER_VOLTAGES = {-1, -1, -1};//insert constants here, move to constants folder
-    //for example, position 0: shooter motor, position 1: relay, position 2: collector, change however you like
 
     public Shoot(Shooter shooter, XboxController operatorController) {//add xbox controller
         this.shooter = shooter;
@@ -20,23 +20,13 @@ public class Shoot extends Command {
     public void execute() {
         double trigger = operatorController.getLeftTriggerAxis();
         if (trigger > 0.1) {
-
-            shooter.setVoltages(SHOOTER_VOLTAGES);
-            //NOT setVoltage!!!! Once Shooter class is done, make it get each value and assign it to the according motor
-            /*public void setVoltages(double[] volts) {
-            motor1.setVoltage(volts[0]);
-            motor2.setVoltage(volts[1]);
-            motor3.setVoltage(volts[2]);
-            } 
-             */
+            shooter.setVoltage(12);
         } else {
-            shooter.end(true);
+            shooter.setVoltage(0);
         }
-        
     }
 
     public void end(boolean interrupted) {
-        shooter.setVoltages(new double[]{0,0,0});
+        shooter.setVoltage(0);
     }
-    
 }

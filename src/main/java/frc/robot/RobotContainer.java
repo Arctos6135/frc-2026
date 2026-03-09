@@ -12,6 +12,8 @@ import frc.robot.commands.shooter.Shoot;
 import frc.robot.constants.ControllerConstants;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.drivetrain.Drivetrain;
+import frc.robot.subsystems.shooter.Shooter;
+import frc.robot.subsystems.shooter.ShooterIO;
 
 import java.io.File;
 
@@ -39,15 +41,17 @@ public class RobotContainer {
       new XboxController(ControllerConstants.DRIVER_CONTROLLER);
 
   public final Drivetrain drivetrain;
-  public final TeleopDrive teleopDrive;
   public final Shooter shooter;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    this.drivetrain = new Drivetrain(new File(Filesystem.getDeployDirectory(), "swerve"));
-    teleopDrive = new TeleopDrive(drivetrain, driverController);
-    drivetrain.setDefaultCommand(teleopDrive);
-    shooter.setDefaultCommand(shooter);
+    drivetrain = new Drivetrain(new File(Filesystem.getDeployDirectory(), "swerve"));
+    shooter = new Shooter(new ShooterIO());
+
+
+    drivetrain.setDefaultCommand(new TeleopDrive(drivetrain, driverController));
+    shooter.setDefaultCommand(new Shoot(shooter, driverController));
+
     configureBindings();
   }
 
