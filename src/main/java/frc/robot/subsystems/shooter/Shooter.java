@@ -8,7 +8,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class Shooter extends SubsystemBase {
   private final ShooterIO io;
-  // private final ShooterInputsAutoLogged inputs = new ShooterInputsAutoLogged();
+  private final ShooterInputsAutoLogged inputs = new ShooterInputsAutoLogged();
 
   private final SimpleMotorFeedforward feedforward;
 
@@ -20,19 +20,19 @@ public class Shooter extends SubsystemBase {
 
   public Shooter(ShooterIO io) {
     this.io = io;
-    this.feedforward =
-        new SimpleMotorFeedforward(ShooterConstants.kS, 0.15398061338, 0.03178134435);
+    this.feedforward = new SimpleMotorFeedforward(ShooterConstants.kS, 0.15398061338, 0.03178134435);
+
   }
 
   @Override
   public void periodic() {
-    // io.updateInputs(inputs);
+    io.updateInputs(inputs);
     // medianCurrent = filter.calculate(inputs.current);
 
     io.setVoltage(
         feedforward.calculate(targetVelocity, (targetVelocity - lastTargetVelocity) / 0.02));
 
-    // Logger.processInputs("Shooter", inputs);
+    Logger.processInputs("Shooter", inputs);
     lastTargetVelocity = targetVelocity;
   }
 
@@ -42,8 +42,7 @@ public class Shooter extends SubsystemBase {
    * @return in meters of tread per second
    */
   public double getVelocity() {
-    // return inputs.velocity;
-    return 0;
+    return inputs.velocity;
   }
 
   /**
