@@ -6,30 +6,32 @@ import frc.robot.subsystems.collector.Collector;
 import frc.robot.subsystems.intake.Intake;
 
 public class FuelIntake extends Command {
-    private Intake Intake;
+    private Intake intake;
     private Collector collector;
     private final XboxController operatorController;
 
-    public FuelIntake(Intake Intake, Collector Collector, XboxController operatorController) {// add xbox controller
-        this.Intake = Intake;
-        this.collector = Collector;
+    public FuelIntake(Intake Intake, Collector collector, XboxController operatorController) {// add xbox controller
+        this.intake = Intake;
+        this.collector = collector;
         this.operatorController = operatorController;
 
-        addRequirements(Intake);
+        addRequirements(Intake, collector);
     }
 
     public void execute() {
         double trigger = operatorController.getLeftTriggerAxis();
+
         if (trigger > 0.1) {
-            Intake.setVoltage(12);
+            intake.setVoltage(12);
             collector.setVoltage(12);
         } else {
-            Intake.setVoltage(0);
+            intake.setVoltage(0);
             collector.setVoltage(0);
         }
     }
 
     public void end(boolean interrupted) {
-        Intake.setVoltage(0);
+        intake.setVoltage(0);
+        collector.setVoltage(0);
     }
 }

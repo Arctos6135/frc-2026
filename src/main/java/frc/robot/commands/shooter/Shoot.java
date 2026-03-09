@@ -17,11 +17,11 @@ public class Shoot extends Command {
         this.relay = relay;
         this.operatorController = operatorController;
 
-        addRequirements(shooter);
+        addRequirements(shooter, relay);
     }
 
     public void execute() {
-        double trigger = operatorController.getLeftTriggerAxis();
+        double trigger = operatorController.getRightTriggerAxis();
         if (trigger > 0.1) {
             shooter.setVoltage(12);
             relay.setVoltage(12);
@@ -33,5 +33,6 @@ public class Shoot extends Command {
 
     public void end(boolean interrupted) {
         shooter.setVoltage(0);
+        relay.setVoltage(0);
     }
 }
