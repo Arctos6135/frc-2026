@@ -8,14 +8,22 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.drivetrain.TeleopDrive;
+import frc.robot.commands.intake.FuelIntake;
 import frc.robot.commands.shooter.Shoot;
 import frc.robot.constants.ControllerConstants;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.collector.Collector;
+import frc.robot.subsystems.collector.CollectorIOReal;
 import frc.robot.subsystems.drivetrain.Drivetrain;
+import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.intake.IntakeIO;
+import frc.robot.subsystems.intake.IntakeIOReal;
 import frc.robot.subsystems.relay.Relay;
 import frc.robot.subsystems.relay.RelayIO;
+import frc.robot.subsystems.relay.RelayIOReal;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.shooter.ShooterIO;
+import frc.robot.subsystems.shooter.ShooterIOReal;
 
 import java.io.File;
 
@@ -43,10 +51,13 @@ public class RobotContainer {
       OperatorConstants.kDriverControllerPort);
 
   public final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
+  public final XboxController operatorController = new XboxController(ControllerConstants.OPERATOR_CONTROLLER);
 
   public final Drivetrain drivetrain;
   public final Shooter shooter;
   public final Relay relay;
+  public final Collector collector;
+  public final Intake intake;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -54,11 +65,14 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     drivetrain = new Drivetrain(new File(Filesystem.getDeployDirectory(), "swerve"));
-    shooter = new Shooter(new ShooterIO());
-    relay = new Relay(new RelayIO());
+    shooter = new Shooter(new ShooterIOReal());
+    relay = new Relay(new RelayIOReal());
+    collector = new Collector(new CollectorIOReal());
+    intake = new Intake(new IntakeIOReal());
 
     drivetrain.setDefaultCommand(new TeleopDrive(drivetrain, driverController));
-    shooter.setDefaultCommand(new Shoot(shooter, relay, driverController));
+    shooter.setDefaultCommand(new Shoot(shooter, relay, operatorController));
+    intake.setDefaultCommand(new FuelIntake(intake, collector, operatorController));
 
     configureBindings();
   }
