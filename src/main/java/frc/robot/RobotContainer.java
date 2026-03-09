@@ -6,7 +6,6 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.drivetrain.TeleopDrive;
 import frc.robot.commands.intake.FuelIntake;
 import frc.robot.commands.shooter.Shoot;
@@ -16,13 +15,10 @@ import frc.robot.subsystems.collector.Collector;
 import frc.robot.subsystems.collector.CollectorIOReal;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.intake.Intake;
-import frc.robot.subsystems.intake.IntakeIO;
 import frc.robot.subsystems.intake.IntakeIOReal;
 import frc.robot.subsystems.relay.Relay;
-import frc.robot.subsystems.relay.RelayIO;
 import frc.robot.subsystems.relay.RelayIOReal;
 import frc.robot.subsystems.shooter.Shooter;
-import frc.robot.subsystems.shooter.ShooterIO;
 import frc.robot.subsystems.shooter.ShooterIOReal;
 
 import java.io.File;
@@ -71,7 +67,11 @@ public class RobotContainer {
     intake = new Intake(new IntakeIOReal());
 
     drivetrain.setDefaultCommand(new TeleopDrive(drivetrain, driverController));
+
+    // This should automatically bind the shooter (check command execute)
     shooter.setDefaultCommand(new Shoot(shooter, relay, operatorController));
+
+    // This should automatically bind the intake (check command execute)
     intake.setDefaultCommand(new FuelIntake(intake, collector, operatorController));
 
     configureBindings();
@@ -92,14 +92,6 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
-
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is
-    // pressed,
-    // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**
