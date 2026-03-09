@@ -26,7 +26,7 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     io.updateInputs(inputs);
-    // medianCurrent = filter.calculate(inputs.current);
+    medianCurrent = filter.calculate(inputs.current);
 
     io.setVoltage(
         feedforward.calculate(targetVelocity, (targetVelocity - lastTargetVelocity) / 0.02));
