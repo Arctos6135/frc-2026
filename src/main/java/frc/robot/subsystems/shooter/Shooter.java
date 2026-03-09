@@ -21,7 +21,6 @@ public class Shooter extends SubsystemBase {
   public Shooter(ShooterIO io) {
     this.io = io;
     this.feedforward = new SimpleMotorFeedforward(ShooterConstants.kS, 0.15398061338, 0.03178134435);
-
   }
 
   @Override
