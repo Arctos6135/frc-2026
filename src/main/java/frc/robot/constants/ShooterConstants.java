@@ -15,6 +15,9 @@ public class ShooterConstants {
   public static final double SHOOTER_RPS = 20.0;
   public static final double SHOOTER_DURATION = 3; // in seconds
 
+  public static final double DISTANCE_SHOOTER_POWER_CONVERSION = 0;
+  public static final double SHOOTER_DISTANCE_GYRO = 0;
+
   public static final LinearSystem<N1, N1, N1> SHOOTER_LINEAR_SYSTEM =
       new LinearSystem<>(
           new Matrix<>(new SimpleMatrix(new double[] {-5.17})),
