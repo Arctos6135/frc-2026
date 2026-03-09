@@ -15,6 +15,7 @@ public class ShootToHub extends Shoot {
     private final XboxController operatorController;
 
     public ShootToHub(Shooter shooter, Relay relay, XboxController operatorController) {// add xbox controller
+        super(shooter, relay, operatorController);
         this.shooter = shooter;
         this.relay = relay;
         this.operatorController = operatorController;
@@ -26,7 +27,7 @@ public class ShootToHub extends Shoot {
         double trigger = operatorController.getRightTriggerAxis();
         double distance = -1;
         if (trigger > 0.1) {
-            distance = Math.root(Math.pow(ROBOTXFROMHUB,2)+Math.pow(ROBOTYFROMHUB,2)) - ShooterConstants.SHOOTER_DISTANCE_GYRO;//fake variables ROBOTXFROMHUB and ROBOTYFROMHUB, sub in later
+            distance = Math.root(Math.pow(RobotXFromHub,2)+Math.pow(RobotYFromHub,2)) - ShooterConstants.SHOOTER_DISTANCE_GYRO;//fake variables ROBOTXFROMHUB and ROBOTYFROMHUB, sub in later
             shooter.setVoltage(distance*ShooterConstants.DISTANCE_SHOOTER_POWER_CONVERSION);
             relay.setVoltage(12);
         } else {
