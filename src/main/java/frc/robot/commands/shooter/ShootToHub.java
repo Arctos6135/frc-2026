@@ -22,7 +22,7 @@ public class ShootToHub extends Shoot {
 
         addRequirements(shooter, relay);
     }
-
+/*
     public void execute() {
         double trigger = operatorController.getRightTriggerAxis();
         double distance = -1;
@@ -35,7 +35,7 @@ public class ShootToHub extends Shoot {
             relay.setVoltage(0);
         }
     }
-
+*/
     public void end(boolean interrupted) {
         shooter.setVoltage(0);
         relay.setVoltage(0);
