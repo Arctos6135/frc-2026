@@ -13,36 +13,36 @@ import frc.robot.constants.CANConstants;
 import frc.robot.constants.RelayConstants;
 
 public class RelayIOReal extends RelayIO {
-    private final SparkMax indexerMotor;
-    private final RelativeEncoder indexerEncoder;
+    private final SparkMax relayMotor;
+    private final RelativeEncoder relayEncoder;
 
     public RelayIOReal() {
-        indexerMotor = new SparkMax(CANConstants.INDEXER, MotorType.kBrushless);
+        relayMotor = new SparkMax(CANConstants.RELAY, MotorType.kBrushless);
 
-        SparkMaxConfig indexerConfig = new SparkMaxConfig();
-        indexerConfig.smartCurrentLimit(RelayConstants.CURRENT_LIMIT);
-        indexerConfig.idleMode(IdleMode.kBrake);
-        indexerConfig.inverted(true);
+        SparkMaxConfig relayConfig = new SparkMaxConfig();
+        relayConfig.smartCurrentLimit(RelayConstants.CURRENT_LIMIT);
+        relayConfig.idleMode(IdleMode.kBrake);
+        relayConfig.inverted(true);
 
-        indexerConfig.encoder.positionConversionFactor(RelayConstants.POSITION_CONVERSION_FACTOR);
-        indexerConfig.encoder.velocityConversionFactor(RelayConstants.VELOCITY_CONVERSION_FACTOR);
+        relayConfig.encoder.positionConversionFactor(RelayConstants.POSITION_CONVERSION_FACTOR);
+        relayConfig.encoder.velocityConversionFactor(RelayConstants.VELOCITY_CONVERSION_FACTOR);
 
-        indexerMotor.configure(indexerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        relayMotor.configure(relayConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        this.indexerEncoder = indexerMotor.getEncoder();
+        this.relayEncoder = relayMotor.getEncoder();
     }
 
     @Override
     public void setVoltage(double voltage) {
-        indexerMotor.setVoltage(voltage);
+        relayMotor.setVoltage(voltage);
     }
 
     @Override
     public void updateInputs(RelayInputs inputs) {
-        inputs.velocity = indexerEncoder.getVelocity();
-        inputs.position = indexerEncoder.getPosition();
-        inputs.current = indexerMotor.getOutputCurrent();
-        inputs.temperature = indexerMotor.getMotorTemperature();
-        inputs.voltage = indexerMotor.getBusVoltage() * indexerMotor.getAppliedOutput();
+        inputs.velocity = relayEncoder.getVelocity();
+        inputs.position = relayEncoder.getPosition();
+        inputs.current = relayMotor.getOutputCurrent();
+        inputs.temperature = relayMotor.getMotorTemperature();
+        inputs.voltage = relayMotor.getBusVoltage() * relayMotor.getAppliedOutput();
     }
 }

@@ -8,12 +8,12 @@
   },
   "angle": {
     "type": "sparkmax",
-    "id": 1,
+    "id": 8,
     "canbus": null
   },
   "encoder": {
     "type": "thrifty",
-    "id": 0,
+    "id": 2,
     "canbus": null
   },
   "inverted": {

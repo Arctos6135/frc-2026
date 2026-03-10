@@ -2,7 +2,7 @@
   "_comment": "measure and confirm: IMU type/id and invertedIMU setting. Confirm module file order/paths and that module locations match physical robot layout.",
   "imu": {
     "type": "pigeon2",
-    "id": 0,
+    "id": 1,
     "canbus": null
   },
   "invertedIMU": false,
