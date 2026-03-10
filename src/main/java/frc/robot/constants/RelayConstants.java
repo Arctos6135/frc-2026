@@ -10,7 +10,7 @@ public class RelayConstants {
     public static final double SHOOTER_RPS = 20.0;
     public static final double SHOOTER_DURATION = 3; // in seconds
 
-    public static final double kV = 0.15398061338;
-    public static final double kA = 0.03178134435;
-    public static final double kS = 0.14513578646;
+    public static final double kV = 0.0;
+    public static final double kA = 0.0;
+    public static final double kS = 0.0;
 }
